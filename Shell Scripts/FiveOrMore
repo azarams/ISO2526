@@ -1,0 +1,76 @@
+#!/bin/bash
+# Autor: Azara Martín Sánchez
+# Fecha: 10-02-2026
+
+clear
+
+#Control del número de parámetros
+
+if [ $# -ne 2 ]; then
+
+	echo "Error, número de parámetros incorrecto"
+	exit
+fi
+
+salida=$1
+directorio=$2
+
+#Comprobamos si es un fichero existente
+
+if [ -e $salida ]; then
+
+	echo "Error, el fichero introducido ya existe"
+	exit
+fi
+
+#Comprobamos si el directorio no existe
+
+if [ ! -d $directorio ]; then
+
+	echo "Error, el directorio introducido no existe"
+	exit
+fi
+
+#Comprobamos si el directorio está vacío
+
+if [ -z $(ls $directorio) ]; then
+
+	echo "Error, el directorio introducido está vacío"
+	exit
+fi
+
+#Mostramos el nombre y apellido del autor
+
+echo "El Autor es: Azara Martín Sánchez"
+
+
+#Creamos el fichero de salida
+
+touch $salida
+#Identificamos los ficheros .txt con cinco o más líneas
+
+contador=0
+
+for i in $directorio/*.txt; do
+
+	if [ -f $i ]; then
+
+		lineas=$(wc -l < $i)
+
+		if [ $lineas -ge 5 ]; then
+
+			echo $i
+			echo $i >> $salida
+
+			contador=$((contador+1))
+
+			contar_palabras=$(wc -w < $1)
+
+			echo "El fichero original tiene $palabras palabras > $i
+			cat $1 >> $1.q
+		fi
+	fi
+
+done
+
+echo "El numero de ficheros identificados son: $contador >> $salida
