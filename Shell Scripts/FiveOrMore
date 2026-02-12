@@ -62,14 +62,16 @@ for i in $directorio/*.txt; do
 
 			echo $i
 			echo $i >> $salida
-		fi
 
 			contador=$((contador+1))
 
 			contar_palabras=$(wc -w < $1)
 
-			echo "El fichero original tiene $palabras palabras > $i
-			cat $1 >> $1.q
+			{
+				echo "El fichero original tiene $palabras palabras > $i
+				cat $1 
+			} > $1.q
+		fi
 	fi
 
 done
